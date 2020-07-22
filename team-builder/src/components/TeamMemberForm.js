@@ -22,6 +22,7 @@ class TeamMemberForm extends Component {
 
   render() {
     const { value } = this.state
+    console.log(value)
     return (
       <Form>
         <Form.Group widths='equal'>
@@ -77,10 +78,6 @@ class TeamMemberForm extends Component {
           control={TextArea}
           label='About'
           placeholder='Tell us more about you...'
-        />
-        <Form.Field
-          control={Checkbox}
-          label='I agree to the Terms and Conditions'
         />
         <Form.Field control={Button}>Submit</Form.Field>
       </Form>

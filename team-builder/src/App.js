@@ -11,6 +11,7 @@ import TeamMemberForm from './components/TeamMemberForm'
 //css style
 const Styled = styled.div`
   .form{
+    /* don't touch the window and center the content*/
     margin: 2rem auto;
     width: 80vw;
   }
@@ -18,7 +19,7 @@ const Styled = styled.div`
 function App() {
   return (
     <Styled className="form-container">
-      <TeamMemberForm/>
+      <TeamMemberForm />
     </Styled>
   );
 }
