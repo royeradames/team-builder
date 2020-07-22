@@ -10,13 +10,18 @@ import {
 } from 'semantic-ui-react'
 
 
-export default function TeamMemberForm({TeamMemberFormValues, update, submit}) {
+export default function TeamMemberForm({value, update, submit}) {
+
   
+
+  //options for role
   const options = [
     { key: 'm', text: 'Male', value: 'male' },
     { key: 'f', text: 'Female', value: 'female' },
     { key: 'o', text: 'Other', value: 'other' },
   ]
+
+  //helper functions
   const handleChange = (e) => {
     const name = e.target.name
     const value = e.target.value
@@ -27,7 +32,9 @@ export default function TeamMemberForm({TeamMemberFormValues, update, submit}) {
     e.preventDefault()
     submit()
   }
-  const { value } = TeamMemberFormValues
+debugger
+  const areAllFildsEmpty = (!value.fname || !value.lname || !value.role || !value.about)
+
   return (
     <Form onSubmit={onSubmit}>
       <Form.Group widths='equal'>
@@ -84,7 +91,7 @@ export default function TeamMemberForm({TeamMemberFormValues, update, submit}) {
         label='About'
         placeholder='Tell us more about you...'
       />
-      <Form.Field control={Button}>Submit</Form.Field>
+      <Form.Field control={Button} disabled={areAllFildsEmpty}>Submit</Form.Field>
     </Form>
   )
 }

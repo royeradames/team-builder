@@ -32,7 +32,7 @@ const initialTeam = [{
 }]
 function App() {
   //states
-  const [teamMemberFormValues, setTeamMemberFormValues] = useState({})
+  const [teamMemberFormValues, setTeamMemberFormValues] = useState(initialFormValues)
   const [teamMates, setTeamMates] = useState(initialTeam)
 
   const updateForm = (inputName, inputValue) =>{
@@ -62,7 +62,7 @@ function App() {
   return (
     <Styled className="form-container">
       <TeamMemberForm 
-        TeamMemberFormValues={teamMemberFormValues} 
+        value={teamMemberFormValues} 
         update={updateForm}
         submit={submitForm}
       />
