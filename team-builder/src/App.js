@@ -18,17 +18,15 @@ const Styled = styled.div`
   }
 `
 const initialFormValues = {
-  fname: '',
-  lname: '',
+  username: '',
   role: '',
   email: ''
 }
 const initialTeam = [{
   id: uuid(),
-  fname: 'Royer',
-  lname: 'Adames',
-  role: 'react 1',
-  about: 'Excited to work with you.'
+  username: 'Royer',
+  role: 'r1',
+  email: 'royeraadames@gmail.com'
 }]
 function App() {
   //states
@@ -42,15 +40,15 @@ function App() {
   const submitForm = (inputName, inputValue) => {
 
     // new entry to be added to teamMemberFormValues state
+    debugger
     const newFriend = {
-      fname: teamMemberFormValues.fname.trim(),
-      lname: teamMemberFormValues.lname.trim(),
+      username: teamMemberFormValues.username.trim(),
       role: teamMemberFormValues.role,
       email: teamMemberFormValues.email.trim()
     }
 
     //prevent further action if all of the fills are not fill in
-    const isAllFillFilledIn = (!newFriend.fname || !newFriend.lname || !newFriend.role || !newFriend.email)
+    const isAllFillFilledIn = (!newFriend.username || !newFriend.role || !newFriend.email)
     if(isAllFillFilledIn) return
 
     //adding new entry to teamMemberFormValues state

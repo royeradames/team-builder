@@ -23,27 +23,25 @@ export default function TeamMemberForm({ values, update, submit}) {
     e.preventDefault()
     submit()
   }
-  debugger
-  const areAllFildsEmpty = (!values.fname || !values.lname || !values.role || !values.email)
-  debugger
+  const areAllFildsEmpty = (!values.username  || !values.role || !values.email)
 
 
   return (
   <form className='form container' onSubmit={onSubmit}>
     <div className='form-group submit'>
-      <h2>Add a Friend</h2>
+      <h2>A build week team member</h2>
       <button disabled={areAllFildsEmpty}>submit</button>
     </div>
-    <label htmlFor='usernameInput'>First name:&nbsp;
-          <input
-            id='usernameInput'
-            name='username'
-            type='text'
-            placeholder='Enter First Name'
-            maxLength='20'
-            value={values.fname}
-            onChange={onChange}
-          />
+    <label htmlFor='usernameInput'>Username:&nbsp;
+      <input
+        id='usernameInput'
+        name='username'
+        type='text'
+        placeholder='Enter username'
+        maxLength='20'
+        value={values.username}
+        onChange={onChange}
+      />
     </label>
     <label htmlFor='emailInput'>Email:&nbsp;
       <input
@@ -51,7 +49,7 @@ export default function TeamMemberForm({ values, update, submit}) {
         name='email'
         type='email'
         placeholder='Enter email'
-        maxLength='20'
+        maxLength='30'
         value={values.email}
         onChange={onChange}
       />
