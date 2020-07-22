@@ -10,19 +10,10 @@ import {
 } from 'semantic-ui-react'
 
 
-export default function TeamMemberForm({value, update, submit}) {
-
-  
-
-  //options for role
-  const options = [
-    { key: 'm', text: 'Male', value: 'male' },
-    { key: 'f', text: 'Female', value: 'female' },
-    { key: 'o', text: 'Other', value: 'other' },
-  ]
+export default function TeamMemberForm({ values, update, submit}) {
 
   //helper functions
-  const handleChange = (e) => {
+  const onChange = (e) => {
     const name = e.target.name
     const value = e.target.value
     update(name,value)
@@ -32,67 +23,51 @@ export default function TeamMemberForm({value, update, submit}) {
     e.preventDefault()
     submit()
   }
-debugger
-  const areAllFildsEmpty = (!value.fname || !value.lname || !value.role || !value.about)
+  debugger
+  const areAllFildsEmpty = (!values.fname || !values.lname || !values.role || !values.email)
+  debugger
+
 
   return (
-    <Form onSubmit={onSubmit}>
-      <Form.Group widths='equal'>
-        <Form.Field
-          control={Input}
-          label='First name'
-          placeholder='First name'
-        />
-        <Form.Field
-          control={Input}
-          label='Last name'
-          placeholder='Last name'
-        />
-        <Form.Field
-          control={Select}
-          label='Gender'
-          options={options}
-          placeholder='Gender'
-        />
-      </Form.Group>
-      <Form.Group inline>
-        <label>Role</label>
-        <Form.Field
-          control={Radio}
-          label='React 1'
-          value='react 1'
-          checked={value === 'react 1'}
-          onChange={handleChange}
-        />
-        <Form.Field
-          control={Radio}
-          label='React 2'
-          value='react 2'
-          checked={value === 'react 2'}
-          onChange={handleChange}
-        />
-        <Form.Field
-          control={Radio}
-          label='Back end'
-          value='back end'
-          checked={value === 'back end'}
-          onChange={handleChange}
-        />
-        <Form.Field
-          control={Radio}
-          label='HTML and CSS front end'
-          value='HTML and CSS front end'
-          checked={value === 'HTML and CSS front end'}
-          onChange={handleChange}
-        />
-      </Form.Group>
-      <Form.Field
-        control={TextArea}
-        label='About'
-        placeholder='Tell us more about you...'
+  <form className='form container' onSubmit={onSubmit}>
+    <div className='form-group submit'>
+      <h2>Add a Friend</h2>
+      <button disabled={areAllFildsEmpty}>submit</button>
+    </div>
+    <label htmlFor='usernameInput'>First name:&nbsp;
+          <input
+            id='usernameInput'
+            name='username'
+            type='text'
+            placeholder='Enter First Name'
+            maxLength='20'
+            value={values.fname}
+            onChange={onChange}
+          />
+    </label>
+    <label htmlFor='emailInput'>Email:&nbsp;
+      <input
+        id='emailInput'
+        name='email'
+        type='email'
+        placeholder='Enter email'
+        maxLength='20'
+        value={values.email}
+        onChange={onChange}
       />
-      <Form.Field control={Button} disabled={areAllFildsEmpty}>Submit</Form.Field>
-    </Form>
+    </label>
+    <label>Role:&nbsp;
+      <select name='role' value={values.role} onChange={onChange}> 
+        <option disabled value=''>Selec a role</option>
+        <option value='r1'>React 1</option>
+        <option value='r2'>React 2</option>
+        <option value='be'>Back-End</option>
+        <option value='tl'>Team Lead</option>
+      </select>
+    </label>
+
+  </form>
+
   )
 }
 

@@ -21,7 +21,7 @@ const initialFormValues = {
   fname: '',
   lname: '',
   role: '',
-  about: ''
+  email: ''
 }
 const initialTeam = [{
   id: uuid(),
@@ -46,11 +46,11 @@ function App() {
       fname: teamMemberFormValues.fname.trim(),
       lname: teamMemberFormValues.lname.trim(),
       role: teamMemberFormValues.role,
-      about: teamMemberFormValues.about.trim()
+      email: teamMemberFormValues.email.trim()
     }
 
     //prevent further action if all of the fills are not fill in
-    const isAllFillFilledIn = (!newFriend.fname || !newFriend.lname || !newFriend.role || !newFriend.about)
+    const isAllFillFilledIn = (!newFriend.fname || !newFriend.lname || !newFriend.role || !newFriend.email)
     if(isAllFillFilledIn) return
 
     //adding new entry to teamMemberFormValues state
@@ -62,7 +62,7 @@ function App() {
   return (
     <Styled className="form-container">
       <TeamMemberForm 
-        value={teamMemberFormValues} 
+        values={teamMemberFormValues} 
         update={updateForm}
         submit={submitForm}
       />
