@@ -8,7 +8,7 @@ import { v4 as uuid } from 'uuid'
 
 //component
 import TeamMemberForm from './components/TeamMemberForm'
-
+import TeamMates from './components/TeamMates'
 //css style
 const Styled = styled.div`
   .form{
@@ -40,7 +40,6 @@ function App() {
   const submitForm = (inputName, inputValue) => {
 
     // new entry to be added to teamMemberFormValues state
-    debugger
     const newFriend = {
       username: teamMemberFormValues.username.trim(),
       role: teamMemberFormValues.role,
@@ -55,6 +54,7 @@ function App() {
     setTeamMates([newFriend, ...teamMates])
     //clear form
     setTeamMemberFormValues(initialFormValues)
+    console.log(teamMates)
   }
 
   return (
@@ -64,6 +64,13 @@ function App() {
         update={updateForm}
         submit={submitForm}
       />
+    {
+      teamMates.map(friend => {
+        return(
+          <TeamMates key={friend.id} details={friend}/>
+        )
+      })
+    }
     </Styled>
   );
 }

@@ -1,14 +1,4 @@
 import React, { Component } from 'react'
-import {
-  Button,
-  Checkbox,
-  Form,
-  Input,
-  Radio,
-  Select,
-  TextArea,
-} from 'semantic-ui-react'
-
 
 export default function TeamMemberForm({ values, update, submit}) {
 
@@ -29,7 +19,7 @@ export default function TeamMemberForm({ values, update, submit}) {
   return (
   <form className='form container' onSubmit={onSubmit}>
     <div className='form-group submit'>
-      <h2>A build week team member</h2>
+      <h2>Add a build week team member</h2>
       <button disabled={areAllFildsEmpty}>submit</button>
     </div>
     <label htmlFor='usernameInput'>Username:&nbsp;
